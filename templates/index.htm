@@ -1,13 +1,32 @@
 {{define "body"}}
 <html>
+
 <body>
 </body>
 <script type="module">
-    import { h, render } from 'preact';
+    import { render } from 'preact';
+    import { useReducer } from 'preact/hooks';
+    import { html } from 'htm/preact';
+    import { AppFooter } from './static/comp/appfooter.js'
 
-    const app = h('h1', null, 'Wow, Hello World!');
+    // export function AppFooter() {
+    //     return html`
+    // <footer>This a wonderfull footer!</footer>
+    // `
+    // }
 
-    render(app, document.body);
+    export function App() {
+        const [count, add] = useReducer((a, b) => a + b, 0);
+
+        return html`
+      <button onClick=${() => add(-1)}>Decrement</button>
+      <input readonly size="4" value=${count} />
+      <button onClick=${() => add(1)}>Increment</button>
+      <${AppFooter}  />
+    `;
+    }
+
+    render(html`<${App} />`, document.body);
 </script>
 
 </html>
