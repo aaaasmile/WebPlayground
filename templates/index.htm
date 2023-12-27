@@ -1,0 +1,19 @@
+{{define "base"}}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Like tears in rain</title>
+</head>
+<html>
+    <body>
+    </body>
+    <script type="module">
+        import { h, render } from 'https://esm.sh/preact';
+      
+        const app = h('h1', null, 'Hello World!');
+      
+        render(app, document.body);
+      </script>
+</html>
+{{end}}
