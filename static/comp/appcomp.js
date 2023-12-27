@@ -5,3 +5,9 @@ export function AppFooter() {
 `
 }
 
+export function AppHeader(){
+    return html`
+    <div>This my header!</div>
+`
+}
+
