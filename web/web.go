@@ -33,11 +33,16 @@ func handleGet(w http.ResponseWriter, req *http.Request) error {
 		Buildnr: buildnr,
 	}
 
-	templName := "templates/index.htm"
+	templNameBase := "templates/base.htm"
+	templNamePage := "templates/index.htm"
 
-	tmplIndex := template.Must(template.New("AppIndex").ParseFiles(templName))
+	tmplIndex := template.Must(template.New("App").ParseFiles(templNameBase, templNamePage))
 
 	err = tmplIndex.ExecuteTemplate(w, "base", pagectx)
+	if err != nil {
+		return err
+	}
+	err = tmplIndex.ExecuteTemplate(w, "body", pagectx)
 	if err != nil {
 		return err
 	}
