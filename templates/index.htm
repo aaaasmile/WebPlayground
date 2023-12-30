@@ -10,7 +10,9 @@
   import { html } from 'htm/preact';
   //import { LitElement, html } from 'lit';
   //import { SimpleGreeting } from './static/comp/simple.js'
-  import { XSwapped } from './static/comp-lit/x-swapped.js'
+  import './static/comp-lit/x-swapped.js';
+  import './static/comp-lit/x-button.js';
+  import { play } from './static/comp-lit/icons.js';
 
   export function App() {
     //const [count, add] = useReducer((a, b) => a + b, 0);
@@ -22,6 +24,7 @@
     // <simple-greeting name="Markup"></simple-greeting>
     // `;
     return html`
+    <x-button caption="Test" icon=${play}></x-button>  
     <button>load todos</button>
     <x-swapped hx-post="/main/toswap" hx-trigger="click from:button" hx-swap="innerHTML"></x-swapped>
     `;
