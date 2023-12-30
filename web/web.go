@@ -33,12 +33,12 @@ func handleGet(w http.ResponseWriter, req *http.Request) error {
 		Buildnr: buildnr,
 	}
 
-	//templNameBase := "templates/base.htm"
-	//templNamePage := "templates/index.htm"
+	templNameBase := "templates/base.htm"
+	templNamePage := "templates/index.htm"
 	//templNameBase := "templates/base-lit.htm"
 	//templNamePage := "templates/index-lit.htm"
-	templNameBase := "templates/base-pre.htm"
-	templNamePage := "templates/index-pre.htm"
+	//templNameBase := "templates/base-pre.htm"
+	//templNamePage := "templates/index-pre.htm"
 
 	tmplIndex := template.Must(template.New("App").ParseFiles(templNameBase, templNamePage))
 

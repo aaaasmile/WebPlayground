@@ -24,6 +24,11 @@ ma bensì:
 Mentre Button è un componente statico col suo stile, la parte in html che lo conterrà è generata dinamicamente
 sul server usando go html/template.
 
+## Preact, Lit, htmx
+Ho provato ad usare le coppie Lit/htmx e Preact/htmx senza essere soddisfatto.
+Mi va bene il rendering di Preact e il web component di Lit. Quindi uso tutti e tre.
+
+
 ## htmx
 È il cuore che consente un update parziale del dom usando il codice html generato sul server.
 Lo stato dell'applicazione è memorizzato sul server, mentre il client, attraverso il browser,
