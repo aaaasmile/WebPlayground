@@ -1,0 +1,34 @@
+{{define "body"}}
+<html>
+
+<body>
+</body>
+<script type="module">
+  import { render } from 'preact';
+  //import { useReducer } from 'preact/hooks';
+  //import { AppFooter, AppHeader } from './static/comp/appcomp.js'
+  import { html } from 'htm/preact';
+  //import { LitElement, html } from 'lit';
+  //import { SimpleGreeting } from './static/comp/simple.js'
+  //import { XSwapped } from './static/comp-pre/x-swapped.js'
+
+  export function App() {
+    //const [count, add] = useReducer((a, b) => a + b, 0);
+
+    // return html`
+    //   <p>Hello!<p/>
+    // `;
+    // return html`
+    // <simple-greeting name="Markup"></simple-greeting>
+    // `;
+    return html`
+    <button>load todos</button>
+    <x-swapped hx-post="/main/toswap" hx-trigger="click from:button" hx-swap="innerHTML"></x-swapped>
+    `;
+  }
+
+  render(html`<${App} />`, document.body);
+</script>
+
+</html>
+{{end}}
