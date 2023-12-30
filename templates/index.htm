@@ -5,11 +5,11 @@
 </body>
 <script type="module">
   import { render } from 'preact';
-  // import { useReducer } from 'preact/hooks';
-  // import { AppFooter, AppHeader } from './static/comp/appcomp.js'
+  //import { useReducer } from 'preact/hooks';
+  //import { AppFooter, AppHeader } from './static/comp/appcomp.js'
   import { html } from 'htm/preact';
   //import { LitElement, html } from 'lit';
-  import { SimpleGreeting } from './static/comp/simple.js'
+  //import { SimpleGreeting } from './static/comp/simple.js'
   import { XSwapped } from './static/comp/x-swapped.js'
 
   export function App() {
@@ -23,7 +23,7 @@
     // `;
     return html`
     <button>load todos</button>
-    <x-swapped hx-get="/toswap" hx-trigger="click from:button" hx-swap="innerHTML"></x-swapped>
+    <x-swapped hx-post="/main/toswap" hx-trigger="click from:button" hx-swap="innerHTML"></x-swapped>
     `;
   }
 

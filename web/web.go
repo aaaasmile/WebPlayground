@@ -35,6 +35,8 @@ func handleGet(w http.ResponseWriter, req *http.Request) error {
 
 	templNameBase := "templates/base.htm"
 	templNamePage := "templates/index.htm"
+	//templNameBase := "templates/base-lit.htm"
+	//templNamePage := "templates/index-lit.htm"
 
 	tmplIndex := template.Must(template.New("App").ParseFiles(templNameBase, templNamePage))
 
@@ -54,6 +56,11 @@ func apiHandler(w http.ResponseWriter, req *http.Request) {
 	switch req.Method {
 	case "GET":
 		if err := handleGet(w, req); err != nil {
+			log.Println("Error on process request: ", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		}
+	case "POST":
+		if err := handlePost(w, req); err != nil {
 			log.Println("Error on process request: ", err)
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		}
