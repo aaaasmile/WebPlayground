@@ -24,8 +24,8 @@
     // <simple-greeting name="Markup"></simple-greeting>
     // `;
     return html`
-    <x-button caption="Test" icon=${play}></x-button>  
-    <button>load todos</button>
+    <x-button icon=${play}></x-button>  
+    <button>load some html</button>
     <x-swapped hx-post="/main/toswap" hx-trigger="click from:button" hx-swap="innerHTML"></x-swapped>
     `;
   }
