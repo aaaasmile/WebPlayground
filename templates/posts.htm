@@ -1,26 +1,31 @@
 {{define "body"}}
 <html>
+
 <body>
 </body>
 <script type="module">
-  import { render } from 'preact';
-  import { html } from 'htm/preact';
-  import './static/comp-lit/x-post.js';
-  
-  export function Abstract() {
-    return html`
-        <p>Questo è il sito <a href="/main">invido.it</a> che prende il nome dall'omonimo gioco delle carte Invido, un simpatico gioco di carte praticato nella bassa padana.</p>
-    `;
-  }  
+    import { render } from 'preact';
+    import { html } from 'htm/preact';
+    import './static/comp-lit/x-post.js';
 
-  export function Posts() {
-    const title = "Benvenuti su Invido.it";
-    return html`
-    <x-post title="${title}"><${Abstract} /></x-post>
-    `;
-  }
+    //   export function Abstract() {
+    //     return html`
+    //         <p>Questo è il sito <a href="/main">invido.it</a> che prende il nome dall'omonimo gioco delle carte Invido, un simpatico gioco di carte praticato nella bassa padana.</p>
+    //     `;
+    //   }  
 
-  render(html`<${Posts} />`, document.body);
+    export function Posts() {
+        const title1 = "Benvenuti su Invido.it";
+        const Abstract1 = () => html`<p>Questo è il sito <a href="/main">invido.it</a> che prende il nome dall'omonimo gioco delle carte Invido, un simpatico gioco di carte praticato nella bassa padana.</p>`;
+        const title2 = "Novità del giorno";
+        const Abstract2 = () => html`<p>Quante volte ti sei chiesto che lipse lorem è come antani a destra?</p>`;
+        return html`
+            <x-post title="${title1}"><${Abstract1} /></x-post>
+            <x-post title="${title2}"><${Abstract2} /></x-post>
+        `;
+    }
+
+    render(html`<${Posts} />`, document.body);
 </script>
 
 </html>
