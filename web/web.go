@@ -5,11 +5,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"net/url"
 	"os"
 	"os/signal"
 	"strings"
-	"text/template"
 	"time"
 )
 
@@ -23,35 +21,6 @@ type PageCtx struct {
 
 func AppVersion() string {
 	return fmt.Sprintf("Program version: %s", buildnr)
-}
-
-func handleGet(w http.ResponseWriter, req *http.Request) error {
-	var err error
-	u, _ := url.Parse(req.RequestURI)
-	log.Println("GET requested ", u)
-	pagectx := PageCtx{
-		Buildnr: buildnr,
-	}
-
-	templNameBase := "templates/base.htm"
-	templNamePage := "templates/index.htm"
-	//templNameBase := "templates/base-lit.htm"
-	//templNamePage := "templates/index-lit.htm"
-	//templNameBase := "templates/base-pre.htm"
-	//templNamePage := "templates/index-pre.htm"
-
-	tmplIndex := template.Must(template.New("App").ParseFiles(templNameBase, templNamePage))
-
-	err = tmplIndex.ExecuteTemplate(w, "base", pagectx)
-	if err != nil {
-		return err
-	}
-	err = tmplIndex.ExecuteTemplate(w, "body", pagectx)
-	if err != nil {
-		return err
-	}
-
-	return nil
 }
 
 func apiHandler(w http.ResponseWriter, req *http.Request) {

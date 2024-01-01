@@ -1,0 +1,22 @@
+{{define "body"}}
+<html>
+<body>
+</body>
+<script type="module">
+  import { render } from 'preact';
+  import { html } from 'htm/preact';
+  import './static/comp-lit/x-post.js';
+  
+  export function Posts() {
+    const title = "Benvenuti su Invido.it";
+    const abstract = "Questo è il sito invido.it che prende il nome dall'omonimo gioco delle carte Invido, un simpatico gioco di carte praticato nella bassa padana.";
+    return html`
+    <x-post title="${title}" abstract="${abstract}"></x-post>  
+    `;
+  }
+
+  render(html`<${Posts} />`, document.body);
+</script>
+
+</html>
+{{end}}

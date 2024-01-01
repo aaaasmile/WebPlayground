@@ -1,6 +1,6 @@
 {{define "body"}}
 <html>
-<body>
+<body hx-boost="true">
 </body>
 <script type="module">
   import { render } from 'preact';
@@ -23,9 +23,12 @@
     // <simple-greeting name="Markup"></simple-greeting>
     // `;
     return html`
-    <x-button icon=${play}></x-button>  
-    <button>load some html</button>
-    <x-swapped hx-post="/main/toswap" hx-trigger="click from:button" hx-swap="innerHTML"></x-swapped>
+    <div>
+      <a href="/main/posts">Posts</a>
+      <x-button icon=${play}></x-button>  
+      <button>load some html</button>
+      <x-swapped hx-post="/main/toswap" hx-trigger="click from:button" hx-swap="innerHTML"></x-swapped>
+    </div>
     `;
   }
 
