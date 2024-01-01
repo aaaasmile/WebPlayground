@@ -10,12 +10,21 @@ export class XSwapped extends LitElement {
           margin: 2rem;
           color: black;
         }
+        p {
+          text-transform: uppercase;
+          font-size: 3rem;
+          font-weight: 500;
+          line-height: 1;
+          border: 5px solid;
+          padding: 2rem;
+        }
       `;
     constructor() {
         super();
     }
     render() {
         return html`
+        <p> I am a paragraph of text that has a few words in it.</p>
         <div>hello from outside, inner will be swapped</div>
         <slot></slot>
       `
