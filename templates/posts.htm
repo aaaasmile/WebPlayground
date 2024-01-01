@@ -7,11 +7,16 @@
   import { html } from 'htm/preact';
   import './static/comp-lit/x-post.js';
   
+  export function Abstract() {
+    return html`
+        <p>Questo è il sito <a href="/main">invido.it</a> che prende il nome dall'omonimo gioco delle carte Invido, un simpatico gioco di carte praticato nella bassa padana.</p>
+    `;
+  }  
+
   export function Posts() {
     const title = "Benvenuti su Invido.it";
-    const abstract = "Questo è il sito invido.it che prende il nome dall'omonimo gioco delle carte Invido, un simpatico gioco di carte praticato nella bassa padana.";
     return html`
-    <x-post title="${title}" abstract="${abstract}"></x-post>  
+    <x-post title="${title}"><${Abstract} /></x-post>
     `;
   }
 

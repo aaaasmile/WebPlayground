@@ -9,15 +9,19 @@ export class XPost extends LitElement {
         :host {
           padding: 1rem;
         }
+        p {
+            font-size: 1.3rem;
+            padding: 2rem;
+          }
       `;
-    constructor(caption) {
+    constructor() {
         super();
-        this.caption = caption;
     }
     render() {
         return html`
-        <div>${this.title}</div>
-        <div>${this.abstract}</div>
+        <h2>${this.title}</h2>
+        <p>What about this paragraph. Is it like the abstract?</p>
+        <slot></slot>
       `
     }
 }
