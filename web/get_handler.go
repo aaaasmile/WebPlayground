@@ -8,7 +8,6 @@ import (
 )
 
 func handleGet(w http.ResponseWriter, req *http.Request) error {
-	var err error
 	u, _ := url.Parse(req.RequestURI)
 	log.Println("GET requested ", u)
 	pagectx := PageCtx{
@@ -19,20 +18,34 @@ func handleGet(w http.ResponseWriter, req *http.Request) error {
 		return handleGetPosts(w, req)
 	}
 
-	templNameBase := "templates/base.htm"
-	templNamePage := "templates/index.htm"
+	templNameHeader := "templates/header.htm"
+	templNameBody := "templates/index.htm"
+	templNameFooter := "templates/footer.htm"
 	//templNameBase := "templates/base-lit.htm"
 	//templNamePage := "templates/index-lit.htm"
 	//templNameBase := "templates/base-pre.htm"
 	//templNamePage := "templates/index-pre.htm"
 
-	tmplIndex := template.Must(template.New("App").ParseFiles(templNameBase, templNamePage))
+	if err := render(templNameHeader, templNameBody, templNameFooter, w, &pagectx); err != nil {
+		return err
+	}
+	return nil
+}
 
-	err = tmplIndex.ExecuteTemplate(w, "base", pagectx)
+func render(templNameHeader string, templNameBody string, templNameFooter string, w http.ResponseWriter, pagectx *PageCtx) error {
+	tmplIndex := template.Must(template.New("App").ParseFiles(templNameHeader,
+		templNameBody,
+		templNameFooter))
+
+	err := tmplIndex.ExecuteTemplate(w, "header", pagectx)
 	if err != nil {
 		return err
 	}
 	err = tmplIndex.ExecuteTemplate(w, "body", pagectx)
+	if err != nil {
+		return err
+	}
+	err = tmplIndex.ExecuteTemplate(w, "footer", pagectx)
 	if err != nil {
 		return err
 	}
@@ -44,16 +57,9 @@ func handleGetPosts(w http.ResponseWriter, req *http.Request) error {
 	pagectx := PageCtx{
 		Buildnr: buildnr,
 	}
-	templNameBase := "templates/base.htm"
-	templNamePage := "templates/posts.htm"
-	tmplIndex := template.Must(template.New("App").ParseFiles(templNameBase, templNamePage))
-	err := tmplIndex.ExecuteTemplate(w, "base", pagectx)
-	if err != nil {
-		return err
-	}
-	err = tmplIndex.ExecuteTemplate(w, "body", pagectx)
-	if err != nil {
-		return err
-	}
-	return nil
+	templNameHeader := "templates/header.htm"
+	templNameBody := "templates/posts.htm"
+	templNameFooter := "templates/footer.htm"
+
+	return render(templNameHeader, templNameBody, templNameFooter, w, &pagectx)
 }
