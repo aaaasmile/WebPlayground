@@ -4,6 +4,7 @@ export class XPost extends LitElement {
     static properties = {
         title: {},
         date:{},
+        me:{},
         abstract: {},
     };
     static styles = css`
@@ -35,7 +36,7 @@ export class XPost extends LitElement {
         <article>
         <h2>Title: ${this.title}</h2>
         <div>
-        <img class="portrait" src="static/images/me100.jpg" width="40" height="40" alt="me"></img>
+        <img class="portrait" src="static/images/me/${this.me}" width="40" height="40" alt="me"></img>
         <p class="date">${this.date}</p>
         </div>
         <p>What about this paragraph. Is it like the abstract?</p>
