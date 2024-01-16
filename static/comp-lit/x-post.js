@@ -12,7 +12,11 @@ export class XPost extends LitElement {
         p {
             font-size: 1.3rem;
             padding: 2rem;
-          }
+        }
+        ::slotted(p) {
+            font-size: 1.3rem;
+            padding: 2rem;
+        }
       `;
     constructor() {
         super();

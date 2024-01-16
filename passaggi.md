@@ -24,6 +24,14 @@ ma bensì:
 Mentre Button è un componente statico col suo stile, la parte in html che lo conterrà è generata dinamicamente
 sul server usando go html/template.
 
+## Stile
+Prova a vedere il posts.htm. Non ha nessuno stile, ma bensì contiene i pezzi in html,
+che andranno generati sul server, dove questo contenuto html verrà mostrato dal webcomponent
+x-post. x-post ha la sezione css che definisce lo stile dei vari elementi. Il contenuto html
+di Abstract, va a finire in slot. Questo perchè non è possibile creare html da stringhe.
+Lo stile del contenuto, che sarà un hipertesto in paragrafi, avrà uno stile definito
+anch'esso nel componente x-post. Il collegamento è ::slotted(p).  
+
 ## Preact, Lit, htmx
 Ho provato ad usare le coppie Lit/htmx e Preact/htmx senza essere soddisfatto.
 Mi va bene il rendering di Preact e il web component di Lit. Quindi uso tutti e tre.
