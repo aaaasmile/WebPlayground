@@ -1,10 +1,10 @@
 package web
 
 import (
+	"html/template"
 	"log"
 	"net/http"
 	"net/url"
-	"text/template"
 )
 
 func handleGet(w http.ResponseWriter, req *http.Request) error {
@@ -32,6 +32,18 @@ func handleGet(w http.ResponseWriter, req *http.Request) error {
 	return nil
 }
 
+func handleGetPosts(w http.ResponseWriter, req *http.Request) error {
+	log.Println("providing posts")
+	pagectx := PageCtx{
+		Buildnr: buildnr,
+	}
+	templNameHeader := "templates/header.htm"
+	templNameBody := "templates/posts.htm"
+	templNameFooter := "templates/footer.htm"
+
+	return render(templNameHeader, templNameBody, templNameFooter, w, &pagectx)
+}
+
 func render(templNameHeader string, templNameBody string, templNameFooter string, w http.ResponseWriter, pagectx *PageCtx) error {
 	tmplIndex := template.Must(template.New("App").ParseFiles(templNameHeader,
 		templNameBody,
@@ -50,16 +62,4 @@ func render(templNameHeader string, templNameBody string, templNameFooter string
 		return err
 	}
 	return nil
-}
-
-func handleGetPosts(w http.ResponseWriter, req *http.Request) error {
-	log.Println("providing posts")
-	pagectx := PageCtx{
-		Buildnr: buildnr,
-	}
-	templNameHeader := "templates/header.htm"
-	templNameBody := "templates/posts.htm"
-	templNameFooter := "templates/footer.htm"
-
-	return render(templNameHeader, templNameBody, templNameFooter, w, &pagectx)
 }

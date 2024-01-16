@@ -18,13 +18,15 @@
 
     export function Posts() {
         const title1 = "Benvenuti su Invido.it";
+        const date1 = "Lunedì, 22 Maggio 2023"
         const Abstract1 = () => html`<p>Questo è il sito <a href="/main">invido.it</a> che prende il nome dall'omonimo gioco delle carte Invido, un simpatico gioco di carte praticato nella bassa padana.</p>`;
         const title2 = "Novità del giorno";
+        const date2 = "Sabato, 19 Febbraio 2022"
         const Abstract2 = () => html`<p>Quante volte ti sei chiesto che lipse lorem è come antani a destra?</p>`;
 
         return html`
-            <x-post title="${title1}"><${Abstract1} /></x-post>
-            <x-post title="${title2}"><${Abstract2} /></x-post>
+            <x-post title="${title1}" date="${date1}"><${Abstract1} /></x-post>
+            <x-post title="${title2}" date="${date2}"><${Abstract2} /></x-post>
         `;
     }
 
