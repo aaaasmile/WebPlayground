@@ -56,3 +56,10 @@ un shadow DOM, che è quello che usa React per creare la sua responsive app.
 - Specifiche di HTML: https://html.spec.whatwg.org/multipage/
 - go htmx example: https://github.com/joerdav/go-htmx-examples/tree/main
 - htmx e webcomponent: https://binaryigor.com/htmx-and-web-components-a-perfect-match.html
+
+## Md editor
+Per l'editor di un post in formato md, uso l'editor yace (https://petersolopov.github.io/yace/examples/)
+Nell'esempio di Yace ci sono delle dipendenze che ho caricato usando un altro header: header_editor.htm.
+Esse sono:
+ - highlight su https://highlightjs.org/
+ - mdhl che dovrebbe essere su: https://github.com/petersolopov/mdhl
