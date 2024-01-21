@@ -29,7 +29,7 @@ func handleGetEdit(w http.ResponseWriter, req *http.Request) error {
 	pagectx := PageCtx{
 		Buildnr: buildnr,
 	}
-	templNameHeader := "templates/header.htm"
+	templNameHeader := "templates/header_editor.htm"
 	templNameBody := "templates/editor.htm"
 	templNameFooter := "templates/footer.htm"
 

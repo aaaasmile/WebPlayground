@@ -1,27 +1,27 @@
 import Yace from "https://unpkg.com/yace?module";
 
-// import { highlight, defaultRenderers } from "mdhl";
-// import hljs from "highlight.js";
+import { highlight, defaultRenderers } from "https://unpkg.com/mdhl@0.0.6/dist/mdhl.esm.js?module";
+//import hljs from "highlight";
 
 
 // import "mdhl/mdhl.css";
 // import "highlight.js/styles/github-gist.css";
 
-// const renderer = {
-//   ...defaultRenderers,
-//   codeInFences: (code, language) => {
-//     try {
-//       // highlight.js throw error when language is not found
-//       return hljs.highlight(language, code).value;
-//     } catch (error) {
-//       return defaultRenderers.codeInFences(code, language);
-//     }
-//   }
-// };
+const renderer = {
+  ...defaultRenderers,
+  codeInFences: (code, language) => {
+    try {
+      // highlight.js throw error when language is not found
+      return hljs.highlight(language, code).value;
+    } catch (error) {
+      return defaultRenderers.codeInFences(code, language);
+    }
+  }
+};
 
-// function highlighter(value) {
-//   return highlight(value, renderer);
-// }
+function highlighter(value) {
+  return highlight(value, renderer);
+}
 
 const editor = new Yace("#editor", {
   value:
@@ -29,7 +29,7 @@ const editor = new Yace("#editor", {
   styles: {
     fontSize: "18px"
   },
-  //highlighter,
+  highlighter,
   lineNumbers: true
 });
 
