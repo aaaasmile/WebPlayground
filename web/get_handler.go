@@ -10,28 +10,31 @@ import (
 
 func handleGet(w http.ResponseWriter, req *http.Request) error {
 	u, _ := url.Parse(req.RequestURI)
-	log.Println("GET requested ", u)
+	log.Println("GET requested ", u, u.Path)
 
-	uristr := u.String()
+	uristr := u.Path //u.String()
+
 	switch uristr {
 	case "/main/":
 		return handleIndexGetIndex(w, req)
 	case "/main/posts":
 		return handleGetPosts(w, req)
 	case "/main/admin01/edit":
-		return handleGetEdit(w, req)
+		return handleGetEdit(w, req, u)
 	}
 
 	return fmt.Errorf("unsupported url: %s", uristr)
 }
 
-func handleGetEdit(w http.ResponseWriter, req *http.Request) error {
+func handleGetEdit(w http.ResponseWriter, req *http.Request, u *url.URL) error {
 	pagectx := PageCtx{
 		Buildnr: buildnr,
 	}
 	templNameHeader := "templates/header_editor.htm"
 	templNameBody := "templates/editor.htm"
 	templNameFooter := "templates/footer.htm"
+	//u.QueryParam
+	// load source from id and render it
 
 	if err := render(templNameHeader, templNameBody, templNameFooter, w, &pagectx); err != nil {
 		return err
