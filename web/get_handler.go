@@ -1,6 +1,7 @@
 package web
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -10,21 +11,41 @@ import (
 func handleGet(w http.ResponseWriter, req *http.Request) error {
 	u, _ := url.Parse(req.RequestURI)
 	log.Println("GET requested ", u)
+
+	uristr := u.String()
+	switch uristr {
+	case "/main/":
+		return handleIndexGetIndex(w, req)
+	case "/main/posts":
+		return handleGetPosts(w, req)
+	case "/main/admin01/edit":
+		return handleGetEdit(w, req)
+	}
+
+	return fmt.Errorf("unsupported url: %s", uristr)
+}
+
+func handleGetEdit(w http.ResponseWriter, req *http.Request) error {
 	pagectx := PageCtx{
 		Buildnr: buildnr,
 	}
-	uristr := u.String()
-	if uristr == "/main/posts" {
-		return handleGetPosts(w, req)
-	}
+	templNameHeader := "templates/header.htm"
+	templNameBody := "templates/editor.htm"
+	templNameFooter := "templates/footer.htm"
 
+	if err := render(templNameHeader, templNameBody, templNameFooter, w, &pagectx); err != nil {
+		return err
+	}
+	return nil
+}
+
+func handleIndexGetIndex(w http.ResponseWriter, req *http.Request) error {
+	pagectx := PageCtx{
+		Buildnr: buildnr,
+	}
 	templNameHeader := "templates/header.htm"
 	templNameBody := "templates/index.htm"
 	templNameFooter := "templates/footer.htm"
-	//templNameBase := "templates/base-lit.htm"
-	//templNamePage := "templates/index-lit.htm"
-	//templNameBase := "templates/base-pre.htm"
-	//templNamePage := "templates/index-pre.htm"
 
 	if err := render(templNameHeader, templNameBody, templNameFooter, w, &pagectx); err != nil {
 		return err

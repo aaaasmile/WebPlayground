@@ -15,7 +15,7 @@ Sono partito usando preact, che non mi sembra male. Però Lit è più snello e a
 preferenza. Vorrei usare Web Components per isolare lo style. I Web Components sono statici e vengono
 scaricati dal server all'inizio senza go template. Questo ha la praticità di editare il file senza
 dovere compilare di nuovo. Però non voglio creare una SPA, ma solo isolare lo stile e creare
-dei componenti base che abbiano una semantica coprensibile. Quello che non voglio vedere è
+dei componenti base che abbiano una semantica comprensibile. Quello che non voglio vedere è
 
     <button class="button button-primary">
 ma bensì:
@@ -29,18 +29,20 @@ Prova a vedere il posts.htm. Non ha nessuno stile, ma bensì contiene i pezzi in
 che andranno generati sul server, dove questo contenuto html verrà mostrato dal webcomponent
 x-post. x-post ha la sezione css che definisce lo stile dei vari elementi. Il contenuto html
 di Abstract, va a finire in slot. Questo perchè non è possibile creare html da stringhe.
-Lo stile del contenuto, che sarà un hipertesto in paragrafi, avrà uno stile definito
+Lo stile del contenuto, che sarà un hypertesto in paragrafi, avrà uno stile definito
 anch'esso nel componente x-post. Il collegamento è ::slotted(p).  
 
 ## Preact, Lit, htmx
 Ho provato ad usare le coppie Lit/htmx e Preact/htmx senza essere soddisfatto.
-Mi va bene il rendering di Preact e il web component di Lit. Quindi uso tutti e tre.
+Mi va bene il rendering (css e render) di Preact e il web component di Lit (extends LitElement). 
+Quindi, per ora, uso tutti e tre.
 
 
 ## htmx
 È il cuore che consente un update parziale del dom usando il codice html generato sul server.
 Lo stato dell'applicazione è memorizzato sul server, mentre il client, attraverso il browser,
-può andare avanti e indietro nella storia. 
+può andare avanti e indietro nella storia. L'unico svantaggio è che, al momento, non si può usare
+un shadow DOM, che è quello che usa React per creare la sua responsive app. 
 
 ## Risorse
 
@@ -53,3 +55,4 @@ può andare avanti e indietro nella storia.
 - Hypermedia Book: https://hypermedia.systems/book/contents/
 - Specifiche di HTML: https://html.spec.whatwg.org/multipage/
 - go htmx example: https://github.com/joerdav/go-htmx-examples/tree/main
+- htmx e webcomponent: https://binaryigor.com/htmx-and-web-components-a-perfect-match.html

@@ -2,7 +2,9 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
+	"mime"
 	"time"
 
 	"App/web"
@@ -31,4 +33,10 @@ func main() {
 	t := time.Now()
 	elapsed := t.Sub(start)
 	log.Printf("That's all folks. (elapsed time %v)\n", elapsed)
+}
+
+func init() {
+	_ = mime.AddExtensionType(".js", "text/javascript")
+	_ = mime.AddExtensionType(".css", "text/css")
+	fmt.Println("Mime overide")
 }
