@@ -65,3 +65,7 @@ Esse sono:
  - mdhl che dovrebbe essere su: https://github.com/petersolopov/mdhl
 Nell'header ho caricato solo i css, mentre i moduli sono caricati nel file index.js.
 Ho cambiato codeInFences per non avere il warning che l'API è deprecated.
+
+## Icone
+Icone gratuite in formato svg si possono trovare su https://icons.getbootstrap.com/
+Basta metterle nel file icons.js e usarke nel componente.

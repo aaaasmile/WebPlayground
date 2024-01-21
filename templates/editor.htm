@@ -1,8 +1,22 @@
 {{define "body"}}
-
 <div class="wrap">
     <div id="editor"></div>
 </div>
+<div id="preview">
+</div>
+<!-- <script type="module" src="../static/editor/index.js"></script> -->
+<script type="module">
+    import { render } from 'preact';
+    import { html } from 'htm/preact';
+    import '../static/editor/x-editor.js';
+    export function Part() {
+        const code1 = "Hello markdown";
+        return html`
+        <x-code mycode="# Nuovo Post \nallora!!"></x-code>
+      `;
+    }
 
-<script  type="module" src="../static/editor/index.js"></script>
+    render(html`<${Part} />`, document.getElementById("preview"));
+</script>
+
 {{end}}

@@ -1,5 +1,5 @@
+import { LitElement, css, html } from 'lit';
 import Yace from "https://unpkg.com/yace@0.0.6/dist/esm/index.esm.js?module";
-
 import { highlight, defaultRenderers } from "https://unpkg.com/mdhl@0.0.6/dist/mdhl.esm.js?module";
 import hljs from 'https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/highlight.min.js';
 import go from "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/go.min.js"
@@ -28,3 +28,22 @@ const editor = new Yace("#editor", {
 });
 
 editor.textarea.spellcheck = true;
+
+export class XCodeEditor extends LitElement {
+    static properties = {
+        mycode: {},
+    };
+    constructor(mycode) {
+        super();
+        this.mycode = mycode;
+    }
+    render() {
+        editor.update({ value: this.mycode });
+        return html`
+        <h2> Preview </h2>
+        Something from XCodeEditor
+        `
+    }
+}
+
+customElements.define('x-code', XCodeEditor);
