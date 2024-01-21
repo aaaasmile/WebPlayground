@@ -63,3 +63,5 @@ Nell'esempio di Yace ci sono delle dipendenze che ho caricato usando un altro he
 Esse sono:
  - highlight su https://highlightjs.org/
  - mdhl che dovrebbe essere su: https://github.com/petersolopov/mdhl
+Nell'header ho caricato solo i css, mentre i moduli sono caricati nel file index.js.
+Ho cambiato codeInFences per non avere il warning che l'API è deprecated.
